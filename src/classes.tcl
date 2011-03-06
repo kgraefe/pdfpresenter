@@ -5,6 +5,8 @@ foreach c [list \
 		WizardFrame \
 		WizardOpenPDF \
 		WizardDragToStartPresentation \
+		WizardSelectNotePosition \
+		WizardShowMonitorPosition \
 	] {
 	source classes/${c}.tcl
 }

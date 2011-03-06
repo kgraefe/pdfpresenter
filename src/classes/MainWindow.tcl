@@ -9,6 +9,7 @@ class MainWindow {
 	private variable btnNext
 	private variable btnBack
 	private variable wizDragToStartPresentation
+	private variable wizSelectNotePosition
 
 	# WizardFrames
 	private variable frames [list]
@@ -23,22 +24,22 @@ class MainWindow {
 		set ns [namespace current]$this
 		namespace eval $ns {}
 
+		set window [$this getWidget]
+
 		$this hide
 		$this setTitle "PDFPresenter"
 		$this setResizable false
 		$this setIcon $::images(window_icon)
+		wm attributes $window -topmost true
 
-		set window [$this getWidget]
 
 		set frmMain [::Window::combineWidgetPath $window frmMain]
-		ttk::frame $frmMain -width 300 -height 300 -border 5
+		ttk::frame $frmMain -border 5
 		pack $frmMain -side top -fill both -expand true
 
-		set wizOpenPDF [WizardOpenPDF #auto $frmMain]
-		lappend frames [$wizOpenPDF getWidget]
-
-		set wizDragToStartPresentation [WizardDragToStartPresentation #auto $this $frmMain]
-		lappend frames [$wizDragToStartPresentation getWidget]
+		set frmFrames [Window::combineWidgetPath $frmMain frmFrames]
+		ttk::frame $frmFrames
+		pack $frmFrames -side top -fill both -expand true
 
 		set sep [Window::combineWidgetPath $frmMain sep]
 		ttk::separator $sep -orient horizontal
@@ -52,23 +53,39 @@ class MainWindow {
 		ttk::button $btnBack -text "< Back" -command [list $this prevFrame]
 		pack $btnBack -side left
 
+		set wizOpenPDF [WizardOpenPDF #auto $this $frmFrames]
+		lappend frames $wizOpenPDF
+
+		set wizSelectNotePosition [WizardSelectNotePosition #auto $this $frmFrames]
+		lappend frames $wizSelectNotePosition
+
+		set wizShowMonitorPosition [WizardShowMonitorPosition #auto $this $frmFrames]
+		lappend frames $wizShowMonitorPosition
+
+		set wizDragToStartPresentation [WizardDragToStartPresentation #auto $this $frmFrames]
+		lappend frames $wizDragToStartPresentation
+
+
 		update idletasks
 		set maxwidth 0
 		set maxheight 0
 		for {set i 0} {$i < [llength $frames]} {incr i} {
-			set f [showFrame $i]
-			update idletasks
+			set f [[lindex $frames $i] getWidget]
 
-			if {[$f cget -width] > $maxwidth} {
-				set maxwidth [$f cget -width]
+			set width [winfo reqwidth $f]
+			set height [winfo reqheight $f]
+
+			if {$width > $maxwidth} {
+				set maxwidth $width
 			}
-			if {[$f cget -height] > $maxheight} {
-				set maxheight [$f cget -height]
+			if {$height > $maxheight} {
+				set maxheight $height
 			}
 		}
 
+		$frmFrames configure -width $maxwidth -height $maxheight
+		pack propagate $frmFrames false
 
-		pack propagate $frmMain false
 		showFrame 0
 
 		$this center
@@ -98,14 +115,22 @@ class MainWindow {
 
 	private method showFrame {idx} {
 		if {$curFrameIdx != -1} {
-			pack forget [lindex $frames $curFrameIdx]
+			pack forget [[lindex $frames $curFrameIdx] getWidget]
 		}
 
-		pack [lindex $frames $idx] \
+		pack [[lindex $frames $idx] getWidget] \
 			-side top \
-			-before $sep \
-			-expand true
+			-expand true \
+			-fill both
 		set curFrameIdx $idx
+
+		[lindex $frames $idx] onDisplay
+
+		if {[[lindex $frames $idx] isReady]} {
+			$btnNext configure -state enabled
+		} else {
+			$btnNext configure -state disabled
+		}
 
 		if {$idx == 0} {
 			pack forget $btnBack
@@ -120,6 +145,10 @@ class MainWindow {
 		}
 
 		return [lindex $frames $idx]
+	}
+
+	public method getNotesPosition {} {
+		return [$wizSelectNotePosition getPosition]
 	}
 
 	destructor {

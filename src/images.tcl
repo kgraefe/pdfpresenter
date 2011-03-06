@@ -1,7 +1,18 @@
-set ::images(window_icon)	[image create photo -file "icons/16x16/x-office-presentation.png"]
-set ::images(drag_symbol)	[image create photo -file "icons/32x32/x-office-presentation.png"]
-#set ::images(drag_empty)	[image create photo -width 32 -height 32]
-set ::images(drag_empty)	[image create photo -file "icons/32x32/x-office-presentation_gray.png"]
+# TODO: rename drag_symbol
+foreach icon [list \
+		window_icon \
+		drag_symbol \
+		notes \
+		notes_gray \
+		notes_lightgray \
+		laptop \
+		beamer \
+		beamer_lightgray \
+	] {
+	set ::images($icon) [image create photo -file "icons/$icon.png"]
+}
+#set ::images(drag_empty)	[image create photo -width 32 -heiht 32]
+set ::images(drag_empty)	[image create photo -file "icons/drag_symbol_lightgray.png"]
 
 # this is Windows-only
-set ::images(drag_cursor)	"@icons/32x32/x-office-presentation.cur"
+set ::images(drag_cursor)	"@icons/drag_symbol.cur"

@@ -3,10 +3,20 @@ class WizardFrame {
 	
 	private common count 0
 	private variable instance
+
+	private variable window
+	private variable ready false
 	
-	constructor {parent} {
+	constructor {_window parent} {
+		if {![itcl::is object $_window -class MainWindow]} {
+			error "ERROR: Wrong parameter!"
+		}
+		set window $_window
+
 		set instance $count
 		incr count
+
+
 		
 		set widget [::Window::combineWidgetPath $parent wizardFrame${instance}]
 		ttk::frame $widget
@@ -17,4 +27,18 @@ class WizardFrame {
 	public method getWidget {} {
 		return $widget
 	}
+
+	public method setReady {r} {
+		set ready $r
+	}
+
+	public method isReady {} {
+		return $ready
+	}
+
+	public method getWindow {} {
+		return $window
+	}
+
+	public method onDisplay {} {}
 }

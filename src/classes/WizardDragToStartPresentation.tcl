@@ -9,10 +9,7 @@ class WizardDragToStartPresentation {
 	private variable pdfwidget [list 0 HWND]
 	private variable lasttoplevel [list 0 HWND]
 
-	constructor {_window parent} {WizardFrame::constructor $parent} {
-		# TODO: Check!
-		set window $_window
-
+	constructor {window parent} {WizardFrame::constructor $window $parent} {
 		set w [$this getWidget]
 
 		set lblHead [::Window::combineWidgetPath $w lblHead]
