@@ -1,6 +1,7 @@
-package require Ffidlrt
-package require winapix
 package require twapi
+
+package require Tk
+wm withdraw .   ;# Root-Fenster verstecken
 
 package require tile
 # Style umstellen
@@ -12,5 +13,7 @@ wm withdraw .   ;# Root-Fenster verstecken
 
 package require Itcl
 namespace import itcl::*
+
+package require Img
 
 

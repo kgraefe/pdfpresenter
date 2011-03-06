@@ -5,10 +5,14 @@ class MainWindow {
 
 	private variable strg
 
-	private variable presentationFile
-	private variable notesFile
+	private variable sep
+	private variable btnNext
+	private variable btnBack
+	private variable wizDragToStartPresentation
 
-	private variable btnOK
+	# WizardFrames
+	private variable frames [list]
+	private variable curFrameIdx -1
 
 	constructor {_strg} {
 		if {![itcl::is object $_strg -class PDFPresenterStrg]} {
@@ -19,89 +23,107 @@ class MainWindow {
 		set ns [namespace current]$this
 		namespace eval $ns {}
 
-		set presentationFile ${ns}::presentationFile
-		set $presentationFile ""
-		set notesFile ${ns}::notesFile
-		set $notesFile ""
-
 		$this hide
 		$this setTitle "PDFPresenter"
 		$this setResizable false
+		$this setIcon $::images(window_icon)
 
 		set window [$this getWidget]
 
 		set frmMain [::Window::combineWidgetPath $window frmMain]
-		ttk::frame $frmMain -width 200 -height 200 -border 3
+		ttk::frame $frmMain -width 300 -height 300 -border 5
 		pack $frmMain -side top -fill both -expand true
 
-		set row 0
+		set wizOpenPDF [WizardOpenPDF #auto $frmMain]
+		lappend frames [$wizOpenPDF getWidget]
 
-		set lblPresentationFile [::Window::combineWidgetPath $frmMain lblPresentationFile]
-		ttk::label $lblPresentationFile -text "Presentation file:"
-		grid $lblPresentationFile -sticky w -row $row -column 0
+		set wizDragToStartPresentation [WizardDragToStartPresentation #auto $this $frmMain]
+		lappend frames [$wizDragToStartPresentation getWidget]
 
-		set txtPresentationFile [::Window::combineWidgetPath $frmMain txtPresentationFile]
-		ttk::entry $txtPresentationFile -textvariable $presentationFile -width 30 -state readonly
-		grid $txtPresentationFile -sticky we -row $row -column 1
+		set sep [Window::combineWidgetPath $frmMain sep]
+		ttk::separator $sep -orient horizontal
+		pack $sep -side top -fill x -pady 10
 
-		set btnPresentationFile [::Window::combineWidgetPath $frmMain btnPresentationFile]
-		ttk::button $btnPresentationFile -text "..." -width 3 -command [list $this chooseFile $presentationFile]
-		grid $btnPresentationFile -sticky we -row $row -column 2
+		set btnNext [Window::combineWidgetPath $frmMain btnNext]
+		ttk::button $btnNext -text "Next >" -command [list $this nextFrame]
+		pack $btnNext -side right
 
-		incr row
+		set btnBack [Window::combineWidgetPath $frmMain btnBack]
+		ttk::button $btnBack -text "< Back" -command [list $this prevFrame]
+		pack $btnBack -side left
 
-		set lblNotesFile [::Window::combineWidgetPath $frmMain lblNotesFile]
-		ttk::label $lblNotesFile -text "Notes file:"
-		grid $lblNotesFile -sticky w -row $row -column 0
+		update idletasks
+		set maxwidth 0
+		set maxheight 0
+		for {set i 0} {$i < [llength $frames]} {incr i} {
+			set f [showFrame $i]
+			update idletasks
 
-		set txtNotesFile [::Window::combineWidgetPath $frmMain txtNotesFile]
-		ttk::entry $txtNotesFile -textvariable $notesFile -width 30 -state readonly
-		grid $txtNotesFile -sticky we -row $row -column 1
+			if {[$f cget -width] > $maxwidth} {
+				set maxwidth [$f cget -width]
+			}
+			if {[$f cget -height] > $maxheight} {
+				set maxheight [$f cget -height]
+			}
+		}
 
-		set btnNotesFile [::Window::combineWidgetPath $frmMain btnNotesFile]
-		ttk::button $btnNotesFile -text "..." -width 3 -command [list $this chooseFile $notesFile]
-		grid $btnNotesFile -sticky we -row $row -column 2
 
-		set btnCancel [::Window::combineWidgetPath $window btnCancel]
-		ttk::button $btnCancel -text Cancel -command [list delete object $this]
-		pack $btnCancel -side left -fill both -expand true
-
-		set btnOK [::Window::combineWidgetPath $window btnOK]
-		ttk::button $btnOK -text OK -state disabled -command [list $this send]
-		pack $btnOK -side right -fill both -expand true
-
-		# Debug
-		set $presentationFile "C:/Users/kgraefe/Documents/Studium/Master/CUDA/beamer/Vortrag.pdf"
-		set $notesFile "C:/Users/kgraefe/Desktop/Beleg1.pdf"
-		$btnOK configure -state enabled
+		pack propagate $frmMain false
+		showFrame 0
 
 		$this center
 		$this show
+	}
+
+	public method frameReady {{value true}} {
+		if {$value} {
+			$btnNext configure -state enabled
+
+			if {$curFrameIdx == [llength $frames] - 1} {
+				$strg startPresentation [$wizDragToStartPresentation getPDFWidget]
+			}
+		} else {
+			$btnNext configure -state disabled
+		}
+		
+	}
+
+	public method nextFrame {} {
+		showFrame [expr $curFrameIdx + 1]
+	}
+
+	public method prevFrame {} {
+		showFrame [expr $curFrameIdx - 1]
+	}
+
+	private method showFrame {idx} {
+		if {$curFrameIdx != -1} {
+			pack forget [lindex $frames $curFrameIdx]
+		}
+
+		pack [lindex $frames $idx] \
+			-side top \
+			-before $sep \
+			-expand true
+		set curFrameIdx $idx
+
+		if {$idx == 0} {
+			pack forget $btnBack
+		} else {
+			pack $btnBack -side left
+		}
+
+		if {$idx == [llength $frames] - 1} {
+			pack forget $btnNext
+		} else {
+			pack $btnNext -side right
+		}
+
+		return [lindex $frames $idx]
 	}
 
 	destructor {
 		$strg window_destroyed $this
 	}
 
-	public method chooseFile {var} {
-		set types {{"PDF Files" {.pdf}}}
-		set selcted_type "PDF Files"
-
-		set file [tk_getOpenFile -filetypes $types -parent [$this getWidget] -typevariable selected_type]
-
-		if {[string equal [file extension $file] ".pdf"] && [file isfile $file] && [file readable $file]} {
-			# TODO: Ende zeigen
-			# TODO: Windows-Dateipfade
-			set $var $file
-		}
-
-		if {![string equal [set $presentationFile] ""] && ![string equal [set $notesFile] ""]} {
-			$btnOK configure -state enable
-		}
-	}
-
-	public method send {} {
-		$strg setFiles [set $presentationFile] [set $notesFile]
-		delete object $this
-	}
 }

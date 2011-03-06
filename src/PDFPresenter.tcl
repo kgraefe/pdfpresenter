@@ -9,6 +9,7 @@ cd [file dirname [info script]]
 source packages.tcl
 source classes.tcl
 source functions.tcl
+source images.tcl
 
 PDFPresenterStrg #auto
 
