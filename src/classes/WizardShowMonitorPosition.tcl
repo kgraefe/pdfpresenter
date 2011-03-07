@@ -19,24 +19,29 @@ class WizardShowMonitorPosition {
 
 		set lblPosTop [Window::combineWidgetPath $frmPosition lblPosTop]
 		ttk::label $lblPosTop -image $::images(beamer_lightgray)
-		grid $lblPosTop -sticky we -row 0 -column 1
+		grid $lblPosTop -row 0 -column 1
 
 		set lblPosLeft [Window::combineWidgetPath $frmPosition lblPosLeft]
 		ttk::label $lblPosLeft -image $::images(beamer_lightgray)
-		grid $lblPosLeft -sticky we -row 1 -column 0
+		grid $lblPosLeft -row 1 -column 0
 
 		set lblLaptop [Window::combineWidgetPath $frmPosition lblLaptop]
 		ttk::label $lblLaptop -image $::images(laptop)
-		grid $lblLaptop -sticky we -row 1 -column 1
+		grid $lblLaptop -row 1 -column 1 -padx 5 -pady 5
 
 		set lblPosRight [Window::combineWidgetPath $frmPosition lblPosRight]
 		ttk::label $lblPosRight -image $::images(beamer_lightgray)
-		grid $lblPosRight -sticky we -row 1 -column 2
+		grid $lblPosRight -row 1 -column 2
 
 		set lblPosBottom [Window::combineWidgetPath $frmPosition lblPosBottom]
 		ttk::label $lblPosBottom -image $::images(beamer_lightgray)
-		grid $lblPosBottom -sticky we -row 2 -column 1
+		grid $lblPosBottom -row 2 -column 1
 
+		set lblHint [Window::combineWidgetPath $w lblHint]
+		ttk::label $lblHint \
+			-text "Make your laptop screen the primary screen!" \
+			-justify center
+		pack $lblHint -side top
 		$this setReady true
 	}
 
@@ -45,7 +50,6 @@ class WizardShowMonitorPosition {
 			$w configure -image $::images(beamer_lightgray)
 		}
 
-		puts [[$this getWindow] getNotesPosition]
 		switch [[$this getWindow] getNotesPosition] {
 			bottom	{$lblPosTop	configure -image $::images(beamer)}
 			right	{$lblPosLeft	configure -image $::images(beamer)}

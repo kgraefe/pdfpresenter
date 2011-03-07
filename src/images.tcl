@@ -8,6 +8,9 @@ foreach icon [list \
 		laptop \
 		beamer \
 		beamer_lightgray \
+		clock \
+		clock_gray \
+		clock_lightgray \
 	] {
 	set ::images($icon) [image create photo -file "icons/$icon.png"]
 }

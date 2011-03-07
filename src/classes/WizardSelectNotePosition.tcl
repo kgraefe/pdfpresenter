@@ -18,23 +18,23 @@ class WizardSelectNotePosition {
 
 		set lblPosTop [Window::combineWidgetPath $frmPosition lblPosTop]
 		ttk::label $lblPosTop -image $::images(notes_lightgray)
-		grid $lblPosTop -sticky we -row 0 -column 1
+		grid $lblPosTop -row 0 -column 1
 
 		set lblPosLeft [Window::combineWidgetPath $frmPosition lblPosLeft]
 		ttk::label $lblPosLeft -image $::images(notes_lightgray)
-		grid $lblPosLeft -sticky we -row 1 -column 0
+		grid $lblPosLeft -row 1 -column 0
 
 		set lblPresentation [Window::combineWidgetPath $frmPosition lblPresentation]
 		ttk::label $lblPresentation -image $::images(drag_symbol)
-		grid $lblPresentation -sticky we -row 1 -column 1
+		grid $lblPresentation -row 1 -column 1 -padx 5 -pady 5
 
 		set lblPosRight [Window::combineWidgetPath $frmPosition lblPosRight]
 		ttk::label $lblPosRight -image $::images(notes_lightgray)
-		grid $lblPosRight -sticky we -row 1 -column 2
+		grid $lblPosRight -row 1 -column 2
 
 		set lblPosBottom [Window::combineWidgetPath $frmPosition lblPosBottom]
 		ttk::label $lblPosBottom -image $::images(notes_lightgray)
-		grid $lblPosBottom -sticky we -row 2 -column 1
+		grid $lblPosBottom -row 2 -column 1
 
 		set positionWidgets [list $lblPosTop $lblPosLeft $lblPosRight $lblPosBottom]
 

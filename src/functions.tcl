@@ -32,3 +32,9 @@ proc do {script arg2 {arg3 {}}} {
 	set ret [catch {uplevel [list while "!($arg3)" $script]} result]
 	return -code $ret $result
 }
+
+proc every {ms body} {
+	if {[eval $body]} {
+		after $ms [list every $ms $body]
+	}
+}

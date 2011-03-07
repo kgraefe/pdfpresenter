@@ -10,7 +10,7 @@ class WizardOpenPDF {
 
 		set lblHint [Window::combineWidgetPath $w lblHint]
 		ttk::label $lblHint \
-			-text "- Use Adobe Reader X!\n- Move it to your laptop screen!"
+			-text "\u2192 Use Adobe Reader X!\n\u2192 Move it to your laptop screen!"
 		pack $lblHint -side top -expand true
 
 		$this setReady true

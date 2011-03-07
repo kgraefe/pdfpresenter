@@ -1,19 +1,11 @@
 class PDFPresenterStrg {
-	private variable ns
-
-	private variable mode prepare
-
-	private variable presentation
-	private variable notes
-
-	private variable prepareWindow
 	private variable mainWindow
+	private variable presentationWindow
+	private variable presentation
 
 	constructor {} {
-		set ns [namespace current]$this
-		namespace eval $ns {}
-
-		set mainWindow [MainWindow ${ns}::#auto $this]
+		set mainWindow [MainWindow #auto $this]
+		set presentationWindow [PresentationWindow #auto $this]
 	}
 
 	destructor {
@@ -27,25 +19,31 @@ class PDFPresenterStrg {
 	}
 
 	public method window_destroyed {window} {
-		#if {[string equal $window $prepareWindow] && [string equal $mode prepare]} closeApplication
 		closeApplication
 	}
 
-	public method startPresentation {pdfwidget} {
-		# TODO make it idiot-prove!
-		set toplevel $pdfwidget
-		set desktop [lindex [twapi::get_desktop_window] 0]
-		while {[lindex [twapi::get_parent_window $toplevel] 0] != $desktop} {
-			set toplevel [twapi::get_parent_window $toplevel]
-		}
+	public method startPresentation {toplevel} {
+		if {![string equal [twapi::get_window_class $toplevel] "AcrobatSDIWindow"]} return
+
+		# Already running presentation?
+		if {[lsearch [twapi::get_window_style $toplevel] popup] != -1} return
+
+		set presentation $toplevel
+
+
+		set notesPos [$mainWindow getNotesPosition]
 		
 		set monitors [twapi::get_multiple_display_monitor_info]
 		# TODO: check count!
 
 		# TODO: check!
-		array set laptop [lindex $monitors 0]
-		array set beamer [lindex $monitors 1]
-		#array set beamer {-extent {1366 0 2390 768} -workarea {1366 0 2390 768} -primary 0 -name {\\.\DISPLAY2}}
+		array set screen0 [lindex $monitors 0]
+		array set screen1 [lindex $monitors 1]
+		if {$screen0(-primary)} {
+			array set beamer [array get screen1]
+		} else {
+			array set beamer [array get screen0]
+		}
 
 		twapi::set_focus $toplevel
 		twapi::send_keys {^l}
@@ -55,25 +53,48 @@ class PDFPresenterStrg {
 		set beamer_width [expr [lindex $beamer(-workarea) 2] - [lindex $beamer(-workarea) 0]]
 		set beamer_height [expr [lindex $beamer(-workarea) 3] - [lindex $beamer(-workarea) 1]]
 
-		set pdf_coords [twapi::get_window_coordinates $pdfwidget]
-		set toplevel_coords [twapi::get_window_coordinates $toplevel]
+		switch $notesPos {
+			top {
+				set target_width	$beamer_width
+				set target_height	[expr $beamer_height * 2]
 
-		set deltaX_left		[expr [lindex $pdf_coords 0] - [lindex $toplevel_coords 0]]
-		set deltaY_top		[expr [lindex $pdf_coords 1] - [lindex $toplevel_coords 1]]
-		set deltaX_right	[expr [lindex $toplevel_coords 2] - [lindex $pdf_coords 2]]
-		set detlaY_bottom	[expr [lindex $toplevel_coords 3] - [lindex $pdf_coords 3]]
+				set target_x		[lindex $beamer(-workarea) 0]
+				set target_y		[expr [lindex $beamer(-workarea) 1] - $beamer_height]
+			}
+			bottom {
+				set target_width	$beamer_width
+				set target_height	[expr $beamer_height * 2]
 
-		# TODO: make more flexible
-		set target_width	[expr $beamer_width * 2]
-		set target_height	$beamer_height
+				set target_x		[lindex $beamer(-workarea) 0]
+				set target_y		[lindex $beamer(-workarea) 1]
+			}
+			left {
+				set target_width	[expr $beamer_width * 2]
+				set target_height	$beamer_height
 
-		# let's assume that the content is the only resizing part of the toplevel
-		set toplevel_width	[expr $target_width + $deltaX_left + $deltaX_right]
-		set toplevel_height	[expr $target_height + $deltaY_top + $detlaY_bottom]
-		set toplevel_x		[expr [lindex $beamer(-workarea) 2] - $target_width - $deltaX_left]
-		set toplevel_y		-$deltaY_top
+				set target_x		[expr [lindex $beamer(-workarea) 0] - $beamer_width]
+				set target_y		[lindex $beamer(-workarea) 1]
+			}
+			right {
+				set target_width	[expr $beamer_width * 2]
+				set target_height	$beamer_height
 
-		twapi::resize_window $toplevel $toplevel_width $toplevel_height
-		twapi::move_window $toplevel $toplevel_x $toplevel_y
+				set target_x		[lindex $beamer(-workarea) 0]
+				set target_y		[lindex $beamer(-workarea) 1]
+			}
+		}
+
+		twapi::resize_window $toplevel $target_width $target_height
+		twapi::move_window $toplevel $target_x $target_y
+
+		$mainWindow hide
+		$presentationWindow show
+
+		setFocusToPresentation
+
+	}
+
+	public method setFocusToPresentation {} {
+		twapi::set_focus $presentation
 	}
 }

@@ -1,8 +1,6 @@
 class MainWindow {
 	inherit Window
 
-	private variable ns
-
 	private variable strg
 
 	private variable sep
@@ -20,9 +18,6 @@ class MainWindow {
 			error "Fehler: Falscher Parameter!"
 		}
 		set strg $_strg
-
-		set ns [namespace current]$this
-		namespace eval $ns {}
 
 		set window [$this getWidget]
 
@@ -97,7 +92,7 @@ class MainWindow {
 			$btnNext configure -state enabled
 
 			if {$curFrameIdx == [llength $frames] - 1} {
-				$strg startPresentation [$wizDragToStartPresentation getPDFWidget]
+				$strg startPresentation [$wizDragToStartPresentation getPDFWindow]
 			}
 		} else {
 			$btnNext configure -state disabled

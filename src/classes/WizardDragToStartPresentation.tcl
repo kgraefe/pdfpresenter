@@ -1,13 +1,11 @@
 class WizardDragToStartPresentation {
 	inherit WizardFrame
 
-	private variable window
-
 	# dragging variables
 	private variable dragging false
 	private variable dragWidget {}
 	private variable pdfwidget [list 0 HWND]
-	private variable lasttoplevel [list 0 HWND]
+	private variable pdftoplevel [list 0 HWND]
 
 	constructor {window parent} {WizardFrame::constructor $window $parent} {
 		set w [$this getWidget]
@@ -33,7 +31,7 @@ class WizardDragToStartPresentation {
 
 		set lblHint [Window::combineWidgetPath $w lblHint]
 		ttk::label $lblHint \
-			-text "Drop it to the CONTENT in your PDF Reader's window!" \
+			-text "Drop it into Adobe Reader's window!" \
 			-justify center
 		pack $lblHint -side top
 
@@ -61,7 +59,7 @@ class WizardDragToStartPresentation {
 				$dragWidget configure -cursor {}
 				$dragWidget configure -image $::images(drag_symbol)
 
-				$window frameReady
+				[$this getWindow] frameReady
 			}
 
 			motion {
@@ -71,11 +69,17 @@ class WizardDragToStartPresentation {
 				set y [lindex $args 1]
 
 				set pdfwidget [twapi::get_window_at_location $x $y]
+
+				set pdftoplevel $pdfwidget
+				set desktop [lindex [twapi::get_desktop_window] 0]
+				while {[lindex [twapi::get_parent_window $pdftoplevel] 0] != $desktop} {
+					set pdftoplevel [twapi::get_parent_window $pdftoplevel]
+				}
 			}
 		}
 	}
 
-	public method getPDFWidget {} {
-		return $pdfwidget
+	public method getPDFWindow {} {
+		return $pdftoplevel
 	}
 }

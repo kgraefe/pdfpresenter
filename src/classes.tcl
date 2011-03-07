@@ -7,6 +7,7 @@ foreach c [list \
 		WizardDragToStartPresentation \
 		WizardSelectNotePosition \
 		WizardShowMonitorPosition \
+		PresentationWindow \
 	] {
 	source classes/${c}.tcl
 }
