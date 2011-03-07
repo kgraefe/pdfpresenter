@@ -25,7 +25,7 @@ class WizardSelectNotePosition {
 		grid $lblPosLeft -row 1 -column 0
 
 		set lblPresentation [Window::combineWidgetPath $frmPosition lblPresentation]
-		ttk::label $lblPresentation -image $::images(drag_symbol)
+		ttk::label $lblPresentation -image $::images(presentation)
 		grid $lblPresentation -row 1 -column 1 -padx 5 -pady 5
 
 		set lblPosRight [Window::combineWidgetPath $frmPosition lblPosRight]

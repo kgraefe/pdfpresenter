@@ -1,7 +1,6 @@
-# TODO: rename drag_symbol
+# TODO: rename presentation
 foreach icon [list \
-		window_icon \
-		drag_symbol \
+		presentation \
 		notes \
 		notes_gray \
 		notes_lightgray \
@@ -15,7 +14,12 @@ foreach icon [list \
 	set ::images($icon) [image create photo -file "icons/$icon.png"]
 }
 #set ::images(drag_empty)	[image create photo -width 32 -heiht 32]
-set ::images(drag_empty)	[image create photo -file "icons/drag_symbol_lightgray.png"]
+set ::images(drag_empty)	[image create photo -file "icons/presentation_lightgray.png"]
+
 
 # this is Windows-only
-set ::images(drag_cursor)	"@icons/drag_symbol.cur"
+set cursorfile [file join $::env(TEMP) "presentation.cur"]
+file copy -force icons/presentation.cur $cursorfile
+set ::images(drag_cursor)	"@$cursorfile"
+
+proc images_cleanup {} [list file delete $cursorfile]

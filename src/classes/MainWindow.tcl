@@ -24,7 +24,7 @@ class MainWindow {
 		$this hide
 		$this setTitle "PDFPresenter"
 		$this setResizable false
-		$this setIcon $::images(window_icon)
+		$this setIcon $::images(presentation)
 		wm attributes $window -topmost true
 
 

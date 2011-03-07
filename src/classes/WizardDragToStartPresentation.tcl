@@ -18,7 +18,7 @@ class WizardDragToStartPresentation {
 		pack $lblHead -side top
 
 		set lblDrag [::Window::combineWidgetPath $w  lblDrag]
-		ttk::label $lblDrag -image $::images(drag_symbol) 
+		ttk::label $lblDrag -image $::images(presentation) 
 		pack $lblDrag \
 			-side top \
 			-padx 20 -pady 20 \
@@ -57,7 +57,7 @@ class WizardDragToStartPresentation {
 
 				set dragging false
 				$dragWidget configure -cursor {}
-				$dragWidget configure -image $::images(drag_symbol)
+				$dragWidget configure -image $::images(presentation)
 
 				[$this getWindow] frameReady
 			}

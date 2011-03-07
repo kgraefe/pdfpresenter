@@ -28,7 +28,7 @@ class PresentationWindow {
 		$this hide
 		$this setTitle "PDFPresenter"
 		$this setResizable false
-		$this setIcon $::images(window_icon)
+		$this setIcon $::images(presentation)
 		wm attributes $window -topmost true
 
 		bind $window <FocusIn> [list $strg setFocusToPresentation]
@@ -56,7 +56,7 @@ class PresentationWindow {
 		pack $sep -side left -fill y
 
 		set lblDrag [::Window::combineWidgetPath $frmMain  lblDrag]
-		ttk::label $lblDrag -image $::images(drag_symbol) 
+		ttk::label $lblDrag -image $::images(presentation) 
 		pack $lblDrag -side left
 
 		# init drag (don't drop, it's not necessary)
@@ -91,7 +91,7 @@ class PresentationWindow {
 
 				set dragging false
 				$dragWidget configure -cursor {}
-				$dragWidget configure -image $::images(drag_symbol)
+				$dragWidget configure -image $::images(presentation)
 
 				$strg startPresentation $pdftoplevel
 			}

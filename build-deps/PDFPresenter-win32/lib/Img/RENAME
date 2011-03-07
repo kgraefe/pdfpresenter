@@ -1,0 +1,7 @@
+foreach file [glob *] {
+    regsub {[0-9.]+[0-9]} $file {} new
+    regsub {^lib} $new {} new
+    if {$new ne $file} {
+	file rename $file $new
+    }
+}

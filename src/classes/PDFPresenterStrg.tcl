@@ -15,6 +15,7 @@ class PDFPresenterStrg {
 	public method closeApplication {} {
 		catch {delete object $this}
 		destroy .
+		images_cleanup
 		exit
 	}
 
