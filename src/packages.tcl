@@ -16,4 +16,7 @@ namespace import itcl::*
 
 package require Img
 
+package require msgcat
+proc _ {s} {::msgcat::mc $s}
+
 

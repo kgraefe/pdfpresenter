@@ -9,7 +9,7 @@ class WizardSelectNotePosition {
 		set w [$this getWidget]
 
 		set lblHead [Window::combineWidgetPath $w lblHead]
-		ttk::label $lblHead -text "Where are the notes in your PDF?" -font "-weight bold"
+		ttk::label $lblHead -text [_ "Where are the notes in your PDF?"] -font "-weight bold"
 		pack $lblHead -side top
 
 		set frmPosition [Window::combineWidgetPath $w frmPosition]

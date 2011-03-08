@@ -19,14 +19,14 @@ class PresentationWindow {
 
 	constructor {_strg} {
 		if {![itcl::is object $_strg -class PDFPresenterStrg]} {
-			error "Fehler: Falscher Parameter!"
+			error "ERROR: wrong parameter!"
 		}
 		set strg $_strg
 
 		set window [$this getWidget]
 
 		$this hide
-		$this setTitle "PDFPresenter"
+		$this setTitle [_ "PDFPresenter"]
 		$this setResizable false
 		$this setIcon $::images(presentation)
 		wm attributes $window -topmost true
@@ -48,7 +48,8 @@ class PresentationWindow {
 		bind $lblStopwatchImg <Double-Button-1> [list $this resetStopWatch]
 
 		set lblStopwatch [Window::combineWidgetPath $frmMain lblStopwatch]
-		ttk::label $lblStopwatch -font "-weight bold -size -32" -text "00:00:00"
+		# Translators: this is the initial value of the stop watch
+		ttk::label $lblStopwatch -font "-weight bold -size -32" -text [_ "00:00:00"]
 		pack $lblStopwatch -side left -expand true -fill x
 
 		set sep [Window::combineWidgetPath $frmMain sep]
@@ -139,7 +140,8 @@ class PresentationWindow {
 		set hours   [expr $minutes / 60]
 		set minutes [expr $minutes - 60 * $hours]
 
-		$lblStopwatch configure -text [format "%02d:%02d:%02d" $hours $minutes $seconds]
+		# Translators: hours:minutes:seconds
+		$lblStopwatch configure -text [format [_ "%02d:%02d:%02d"] $hours $minutes $seconds]
 
 		return true
 	}
@@ -160,7 +162,7 @@ class PresentationWindow {
 		}
 
 		set stopwatch -1
-		$lblStopwatch configure -text "00:00:00"
+		$lblStopwatch configure -text [_ "00:00:00"]
 
 	}
 }

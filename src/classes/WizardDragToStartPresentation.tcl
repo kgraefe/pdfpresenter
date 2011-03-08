@@ -12,7 +12,7 @@ class WizardDragToStartPresentation {
 
 		set lblHead [::Window::combineWidgetPath $w lblHead]
 		ttk::label $lblHead \
-			-text "Drag&Drop the icon to start the presentation!" \
+			-text [_ "Drag&Drop the icon to start the presentation!"] \
 			-font "-weight bold" \
 			-justify center
 		pack $lblHead -side top
@@ -31,7 +31,7 @@ class WizardDragToStartPresentation {
 
 		set lblHint [Window::combineWidgetPath $w lblHint]
 		ttk::label $lblHint \
-			-text "Drop it into Adobe Reader's window!" \
+			-text [_ "Drop it into Adobe Reader's window!"] \
 			-justify center
 		pack $lblHint -side top
 

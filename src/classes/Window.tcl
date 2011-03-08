@@ -82,9 +82,9 @@ class Window {
 	}
 	
 	public method setResizable {resizable} {
-		if {$resizable == true} {
+		if {$resizable} {
 			wm resizable $window 1 1
-		} elseif {$resizable == false} {
+		} elseif {!$resizable} {
 			wm resizable $window 0 0
 		} else {
 			error "Wrong argument for resizable!"

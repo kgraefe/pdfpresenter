@@ -15,14 +15,14 @@ class MainWindow {
 
 	constructor {_strg} {
 		if {![itcl::is object $_strg -class PDFPresenterStrg]} {
-			error "Fehler: Falscher Parameter!"
+			error "ERROR: Wrong parameter!"
 		}
 		set strg $_strg
 
 		set window [$this getWidget]
 
 		$this hide
-		$this setTitle "PDFPresenter"
+		$this setTitle [_ "PDFPresenter"]
 		$this setResizable false
 		$this setIcon $::images(presentation)
 		wm attributes $window -topmost true
@@ -41,11 +41,11 @@ class MainWindow {
 		pack $sep -side top -fill x -pady 10
 
 		set btnNext [Window::combineWidgetPath $frmMain btnNext]
-		ttk::button $btnNext -text "Next >" -command [list $this nextFrame]
+		ttk::button $btnNext -text [_ "Next >"] -command [list $this nextFrame]
 		pack $btnNext -side right
 
 		set btnBack [Window::combineWidgetPath $frmMain btnBack]
-		ttk::button $btnBack -text "< Back" -command [list $this prevFrame]
+		ttk::button $btnBack -text [_ "< Back"] -command [list $this prevFrame]
 		pack $btnBack -side left
 
 		set wizOpenPDF [WizardOpenPDF #auto $this $frmFrames]

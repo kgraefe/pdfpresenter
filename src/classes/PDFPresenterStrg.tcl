@@ -13,6 +13,8 @@ class PDFPresenterStrg {
 	}
 
 	public method closeApplication {} {
+		catch {delete object $mainWindow}
+		catch {delete object $presentationWindow}
 		catch {delete object $this}
 		destroy .
 		images_cleanup

@@ -10,7 +10,7 @@ class WizardShowMonitorPosition {
 		set w [$this getWidget]
 
 		set lblHead [Window::combineWidgetPath $w lblHead]
-		ttk::label $lblHead -text "Set up your desktop like this:" -font "-weight bold"
+		ttk::label $lblHead -text [_ "Set up your desktop like this:"] -font "-weight bold"
 		pack $lblHead -side top
 
 		set frmPosition [Window::combineWidgetPath $w frmPosition]
@@ -39,7 +39,7 @@ class WizardShowMonitorPosition {
 
 		set lblHint [Window::combineWidgetPath $w lblHint]
 		ttk::label $lblHint \
-			-text "Make your laptop screen the primary screen!" \
+			-text [_ "Make your laptop screen the primary screen!"] \
 			-justify center
 		pack $lblHint -side top
 		$this setReady true
