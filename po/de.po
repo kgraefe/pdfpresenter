@@ -3,54 +3,55 @@
 # This file is distributed under the same license as the PDFPresenter package.
 # Konrad Gräfe <konradgraefe@aol.com>, 2011.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PDFPresenter 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-08 15:52+0100\n"
-"PO-Revision-Date: 2011-03-08 15:47+0100\n"
-"Last-Translator: Konrad Gräfe <konradgraefe@aol.com>\n"
+"PO-Revision-Date: 2011-03-08 15:35+0000\n"
+"Last-Translator: kgraefe <Unknown>\n"
 "Language-Team: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2011-03-09 06:13+0000\n"
+"X-Generator: Launchpad (build 12351)\n"
 
 #: ../src/classes/MainWindow.tcl:25 ../src/classes/PresentationWindow.tcl:29
 msgid "PDFPresenter"
-msgstr ""
+msgstr "PDFPresenter"
 
 #: ../src/classes/MainWindow.tcl:44
 msgid "Next >"
-msgstr ""
+msgstr "Weiter >"
 
 #: ../src/classes/MainWindow.tcl:48
 msgid "< Back"
-msgstr ""
+msgstr "< Zurück"
 
 #. Translators: this is the initial value of the stop watch
 #: ../src/classes/PresentationWindow.tcl:52
 #: ../src/classes/PresentationWindow.tcl:165
 msgid "00:00:00"
-msgstr ""
+msgstr "00:00:00"
 
 #. Translators: hours:minutes:seconds
 #: ../src/classes/PresentationWindow.tcl:144
 #, tcl-format
 msgid "%02d:%02d:%02d"
-msgstr ""
+msgstr "%02d:%02d:%02d"
 
 #: ../src/classes/WizardDragToStartPresentation.tcl:15
 msgid "Drag&Drop the icon to start the presentation!"
-msgstr ""
+msgstr "Verschieben Sie das Symbol um die Präsentation zu starten!"
 
 #: ../src/classes/WizardDragToStartPresentation.tcl:34
 msgid "Drop it into Adobe Reader's window!"
-msgstr ""
+msgstr "Schieben Sie es auf das Fenster des Adobe Reader!"
 
 #: ../src/classes/WizardOpenPDF.tcl:8
 msgid "Open PDF presentation please!"
-msgstr ""
+msgstr "Öffnen Sie bitte die PDF-Präsentation!"
 
 #. Translators: "\u2192" represents a right arrow
 #: ../src/classes/WizardOpenPDF.tcl:14
@@ -58,15 +59,17 @@ msgid ""
 "→2 Use Adobe Reader X!\n"
 "→2 Move it to your laptop screen!"
 msgstr ""
+"→2 Benutzen Sie den Adobe Reader X!\n"
+"→2 Verschieben Sie es auf ihren Laptop-Monitor!"
 
 #: ../src/classes/WizardSelectNotePosition.tcl:12
 msgid "Where are the notes in your PDF?"
-msgstr ""
+msgstr "Wo befinden sich in ihrem PDF die Notizen?"
 
 #: ../src/classes/WizardShowMonitorPosition.tcl:13
 msgid "Set up your desktop like this:"
-msgstr ""
+msgstr "Stellen Sie Ihren Desktop so ein:"
 
 #: ../src/classes/WizardShowMonitorPosition.tcl:42
 msgid "Make your laptop screen the primary screen!"
-msgstr ""
+msgstr "Konfigurieren Sie Ihren Laptop-Monitor als Hauptbildschirm!"
