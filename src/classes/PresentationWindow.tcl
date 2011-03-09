@@ -26,7 +26,7 @@ class PresentationWindow {
 		set window [$this getWidget]
 
 		$this hide
-		$this setTitle [_ "PDFPresenter"]
+		$this setTitle [_ "PDF Presenter"]
 		$this setResizable false
 		$this setIcon $::images(presentation)
 		wm attributes $window -topmost true

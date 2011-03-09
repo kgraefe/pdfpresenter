@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PDFPresenter 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-08 15:52+0100\n"
+"POT-Creation-Date: 2011-03-09 10:30+0100\n"
 "PO-Revision-Date: 2011-03-08 15:35+0000\n"
 "Last-Translator: kgraefe <Unknown>\n"
 "Language-Team: de\n"
@@ -18,7 +18,8 @@ msgstr ""
 "X-Generator: Launchpad (build 12351)\n"
 
 #: ../src/classes/MainWindow.tcl:25 ../src/classes/PresentationWindow.tcl:29
-msgid "PDFPresenter"
+#, fuzzy
+msgid "PDF Presenter"
 msgstr "PDFPresenter"
 
 #: ../src/classes/MainWindow.tcl:44
@@ -53,14 +54,14 @@ msgstr "Schieben Sie es auf das Fenster des Adobe Reader!"
 msgid "Open PDF presentation please!"
 msgstr "Öffnen Sie bitte die PDF-Präsentation!"
 
-#. Translators: "\u2192" represents a right arrow
+#. Translators: "->" represents a right arrow
 #: ../src/classes/WizardOpenPDF.tcl:14
 msgid ""
-"→2 Use Adobe Reader X!\n"
-"→2 Move it to your laptop screen!"
+"-> Use Adobe Reader X!\n"
+"-> Move it to your laptop screen!"
 msgstr ""
-"→2 Benutzen Sie den Adobe Reader X!\n"
-"→2 Verschieben Sie es auf ihren Laptop-Monitor!"
+"-> Benutzen Sie den Adobe Reader X!\n"
+"-> Verschieben Sie es auf ihren Laptop-Monitor!"
 
 #: ../src/classes/WizardSelectNotePosition.tcl:12
 msgid "Where are the notes in your PDF?"

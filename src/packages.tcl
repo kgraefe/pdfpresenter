@@ -17,6 +17,7 @@ namespace import itcl::*
 package require Img
 
 package require msgcat
+::msgcat::mcload locales/
 proc _ {s} {::msgcat::mc $s}
 
 
