@@ -63,7 +63,6 @@ class WizardSelectNotePosition {
 			set position $pos
 
 			$this setReady true
-			[$this getWindow] frameReady
 		}
 
 

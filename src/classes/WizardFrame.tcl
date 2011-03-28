@@ -30,6 +30,7 @@ class WizardFrame {
 
 	public method setReady {r} {
 		set ready $r
+		$window frameReadyStateChanged $this
 	}
 
 	public method isReady {} {

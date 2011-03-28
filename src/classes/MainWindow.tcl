@@ -87,8 +87,12 @@ class MainWindow {
 		$this show
 	}
 
-	public method frameReady {{value true}} {
-		if {$value} {
+	public method frameReadyStateChanged {frame} {
+		if {$curFrameIdx == -1} return
+
+		if {![string equal "::MainWindow::[lindex $frames $curFrameIdx]" $frame]} return
+
+		if {[$frame isReady]} {
 			$btnNext configure -state enabled
 
 			if {$curFrameIdx == [llength $frames] - 1} {

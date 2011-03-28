@@ -6,6 +6,8 @@ class WizardShowMonitorPosition {
 	private variable lblPosRight
 	private variable lblPosBottom
 
+	private variable timerId ""
+
 	constructor {window parent} {WizardFrame::constructor $window $parent} {
 		set w [$this getWidget]
 
@@ -42,7 +44,6 @@ class WizardShowMonitorPosition {
 			-text [_ "Make your laptop screen the primary screen!"] \
 			-justify center
 		pack $lblHint -side top
-		$this setReady true
 	}
 
 	public method onDisplay {} {
@@ -56,6 +57,41 @@ class WizardShowMonitorPosition {
 			left	{$lblPosRight	configure -image $::images(beamer)}
 			top	{$lblPosBottom	configure -image $::images(beamer)}
 		}
+
+		checkMonitors
+	}
+
+	public method checkMonitors {} {
+		set ret true
+		after cancel $timerId
+		set timerId [after 500 [list $this checkMonitors]]
+
+		set monitors [twapi::get_multiple_display_monitor_info]
+
+		if {[llength $monitors] != 2} {
+			set ret false
+		} else {
+			array set screen0 [lindex $monitors 0]
+			array set screen1 [lindex $monitors 1]
+			if {$screen0(-primary)} {
+				array set laptop [array get screen0]
+				array set beamer [array get screen1]
+			} else {
+				array set beamer [array get screen0]
+				array set laptop [array get screen1]
+			}
+
+			switch [[$this getWindow] getNotesPosition] {
+				bottom	{set ret [expr [lindex $beamer(-workarea) 1] < [lindex $laptop(-workarea) 1]]}
+				right	{set ret [expr [lindex $beamer(-workarea) 0] < [lindex $laptop(-workarea) 0]]}
+				left	{set ret [expr [lindex $beamer(-workarea) 0] > [lindex $laptop(-workarea) 0]]}
+				top	{set ret [expr [lindex $beamer(-workarea) 1] > [lindex $laptop(-workarea) 1]]}
+			}
+		}
+
+		 
+
+		$this setReady $ret
 	}
 }
 

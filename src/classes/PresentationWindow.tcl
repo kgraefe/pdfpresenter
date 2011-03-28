@@ -31,7 +31,7 @@ class PresentationWindow {
 		$this setIcon $::images(presentation)
 		wm attributes $window -topmost true
 
-		bind $window <FocusIn> [list after 2000 "$strg setFocusToPresentation"]
+		bind $window <FocusIn> [list $strg setFocusToPresentation]
 
 
 		set frmMain [::Window::combineWidgetPath $window frmMain]

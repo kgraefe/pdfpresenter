@@ -59,7 +59,7 @@ class WizardDragToStartPresentation {
 				$dragWidget configure -cursor {}
 				$dragWidget configure -image $::images(presentation)
 
-				[$this getWindow] frameReady
+				$this setReady true
 			}
 
 			motion {
