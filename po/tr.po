@@ -1,0 +1,73 @@
+# Turkish translation for pdfpresenter
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the pdfpresenter package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: pdfpresenter\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2011-03-28 12:35+0200\n"
+"PO-Revision-Date: 2011-04-10 10:12+0000\n"
+"Last-Translator: zeugma <Unknown>\n"
+"Language-Team: Turkish <tr@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2011-04-11 05:43+0000\n"
+"X-Generator: Launchpad (build 12735)\n"
+
+#: ../src/classes/MainWindow.tcl:25 ../src/classes/PresentationWindow.tcl:29
+msgid "PDF Presenter"
+msgstr ""
+
+#: ../src/classes/MainWindow.tcl:44
+msgid "Next >"
+msgstr "İleri >"
+
+#: ../src/classes/MainWindow.tcl:48
+msgid "< Back"
+msgstr "<Geri"
+
+#. Translators: this is the initial value of the stop watch
+#: ../src/classes/PresentationWindow.tcl:52
+#: ../src/classes/PresentationWindow.tcl:165
+msgid "00:00:00"
+msgstr "00:00:00"
+
+#. Translators: hours:minutes:seconds
+#: ../src/classes/PresentationWindow.tcl:144
+#, tcl-format
+msgid "%02d:%02d:%02d"
+msgstr "%02d:%02d:%02d"
+
+#: ../src/classes/WizardDragToStartPresentation.tcl:15
+msgid "Drag&Drop the icon to start the presentation!"
+msgstr ""
+
+#: ../src/classes/WizardDragToStartPresentation.tcl:34
+msgid "Drop it into Adobe Reader's window!"
+msgstr ""
+
+#: ../src/classes/WizardOpenPDF.tcl:8
+msgid "Open PDF presentation please!"
+msgstr ""
+
+#. Translators: "->" represents a right arrow
+#: ../src/classes/WizardOpenPDF.tcl:14
+msgid ""
+"-> Use Adobe Reader X!\n"
+"-> Move it to your laptop screen!"
+msgstr ""
+
+#: ../src/classes/WizardSelectNotePosition.tcl:12
+msgid "Where are the notes in your PDF?"
+msgstr ""
+
+#: ../src/classes/WizardShowMonitorPosition.tcl:13
+msgid "Set up your desktop like this:"
+msgstr ""
+
+#: ../src/classes/WizardShowMonitorPosition.tcl:42
+msgid "Make your laptop screen the primary screen!"
+msgstr ""
