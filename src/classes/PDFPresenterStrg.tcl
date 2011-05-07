@@ -49,6 +49,8 @@ class PDFPresenterStrg {
 			array set laptop [array get screen1]
 		}
 
+		::log::log debug "Monitors: $monitors"
+
 		twapi::set_focus $toplevel
 		twapi::send_keys {^l}
 
@@ -71,6 +73,9 @@ class PDFPresenterStrg {
 		} else {
 			set max_monitor_height $beamer_height
 		}
+
+		::log::log debug "max_monitor_width: $max_monitor_width"
+		::log::log debug "max_monitor_height: $max_monitor_height"
 
 
 		switch $notesPos {
@@ -104,8 +109,15 @@ class PDFPresenterStrg {
 			}
 		}
 
+		::log::log debug "target_width: $target_width"
+		::log::log debug "target_height: $target_height"
+		::log::log debug "target_x: $target_x"
+		::log::log debug "target_y: $target_y"
+
 		twapi::resize_window $toplevel $target_width $target_height
 		twapi::move_window $toplevel $target_x $target_y
+
+		::log::log debug "Adobe popped up: [expr [lsearch [twapi::get_window_style $toplevel] popup] != -1]"
 
 		$mainWindow hide
 		$presentationWindow show

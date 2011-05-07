@@ -63,8 +63,9 @@ class WizardSelectNotePosition {
 			set position $pos
 
 			$this setReady true
-		}
 
+			::log::log debug "Position of notes set to $position"
+		}
 
 	}
 
