@@ -91,7 +91,7 @@ class PDFPresenterStrg {
 				set target_height	[expr $max_monitor_height * 2]
 
 				set target_x		[lindex $beamer(-workarea) 0]
-				set target_y		[lindex $beamer(-workarea) 1]
+				set target_y		[expr [lindex $beamer(-workarea) 3] - $max_monitor_height]
 			}
 			left {
 				set target_width	[expr $max_monitor_width * 2]
@@ -104,7 +104,7 @@ class PDFPresenterStrg {
 				set target_width	[expr $max_monitor_width * 2]
 				set target_height	$beamer_height
 
-				set target_x		[lindex $beamer(-workarea) 0]
+				set target_x		[expr [lindex $beamer(-workarea) 2] - $max_monitor_width]
 				set target_y		[lindex $beamer(-workarea) 1]
 			}
 		}
