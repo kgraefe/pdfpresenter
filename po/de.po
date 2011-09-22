@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-05-15 05:38+0000\n"
-"X-Generator: Launchpad (build 12959)\n"
+"X-Launchpad-Export-Date: 2011-09-22 05:01+0000\n"
+"X-Generator: Launchpad (build 13996)\n"
 
 #: ../src/classes/MainWindow.tcl:25 ../src/classes/PresentationWindow.tcl:29
 msgid "PDF Presenter"
@@ -73,13 +73,3 @@ msgstr "Stellen Sie Ihren Desktop so ein:"
 #: ../src/classes/WizardShowMonitorPosition.tcl:42
 msgid "Make your laptop screen the primary screen!"
 msgstr "Konfigurieren Sie Ihren Laptop-Monitor als Hauptbildschirm!"
-
-#~ msgid "PDFPresenter"
-#~ msgstr "PDFPresenter"
-
-#~ msgid ""
-#~ "→2 Use Adobe Reader X!\n"
-#~ "→2 Move it to your laptop screen!"
-#~ msgstr ""
-#~ "→2 Benutzen Sie den Adobe Reader X!\n"
-#~ "→2 Verschieben Sie es auf ihren Laptop-Monitor!"
