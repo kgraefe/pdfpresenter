@@ -66,6 +66,7 @@ class PresentationWindow {
 		bind $lblDrag <Motion>		[list $this drag motion %X %Y]
 		
 		$this center
+		pack propagate $frmMain false
 	}
 
 	destructor {
