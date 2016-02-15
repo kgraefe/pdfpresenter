@@ -2,6 +2,7 @@
 
 ## Version 1.2 (in development):
 - Resize presentation window to fit its widgets
+- Add debug output
 - Add Basque, French, Russian, Serbian and Turkish translation
 
 
