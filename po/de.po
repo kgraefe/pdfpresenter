@@ -1,6 +1,8 @@
 # PDFPresenter
 # Copyright (C) 2011
 # This file is distributed under the same license as the PDFPresenter package.
+#
+# Translators:
 # Konrad Gräfe <konradgraefe@aol.com>, 2011.
 #
 msgid ""

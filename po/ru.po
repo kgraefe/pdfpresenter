@@ -1,8 +1,10 @@
 # Russian translation for pdfpresenter
 # Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the pdfpresenter package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
-#
+# 
+# Translators:
+# Aleksey Kabanov, 2012
+# Eugene Marshal, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: pdfpresenter\n"
