@@ -23,11 +23,11 @@ win32/PDFPresenter.exe: $(DEPENDENCIES)
 
 packages/PDFPresenter_src.tar.gz: $(DEPENDENCIES)
 	mkdir -p packages
-	tar czvf packages/PDFPresenter_src.tar.gz build-deps/ Makefile src/ ChangeLog.txt
+	tar czvf packages/PDFPresenter_src.tar.gz build-deps/ Makefile src/ CHANGES.md
 	
 packages/PDFPresenter_win32.zip: win32/PDFPresenter.exe
 	mkdir -p tmp/PDFPresenter
-	cp win32/PDFPresenter.exe ChangeLog.txt tmp/PDFPresenter
+	cp win32/PDFPresenter.exe CHANGES.md tmp/PDFPresenter
 	cd tmp; zip -r PDFPresenter_win32.zip PDFPresenter/
 	mkdir -p packages
 	mv tmp/PDFPresenter_win32.zip packages/PDFPresenter_win32.zip
