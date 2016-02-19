@@ -9,3 +9,7 @@ Shows your LaTeX beamer presentation on the projector and your notes on your lap
 [![PDF Presenter 4](https://cloud.githubusercontent.com/assets/3797324/13062025/ef8c212a-d43b-11e5-8956-64c31e69df53.png)](https://cloud.githubusercontent.com/assets/3797324/13062024/edfaab60-d43b-11e5-864b-38e3ee61944f.png)
 [![Presentation on Projector](https://cloud.githubusercontent.com/assets/3797324/13062031/f684593e-d43b-11e5-89c2-fb96546de3d4.png)](https://cloud.githubusercontent.com/assets/3797324/13062026/f239ab9a-d43b-11e5-83a4-1ed092ffe315.png)
 [![Presentation on Laptop](https://cloud.githubusercontent.com/assets/3797324/13062034/faa09078-d43b-11e5-91f0-7731bfba68d8.png)](https://cloud.githubusercontent.com/assets/3797324/13062033/f8d19b5c-d43b-11e5-90eb-ae20bbf1b936.png)
+
+## Requirements
+- Windows
+- Acrobat Reader X (newer versions should work too)
