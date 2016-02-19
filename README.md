@@ -13,3 +13,12 @@ Shows your LaTeX beamer presentation on the projector and your notes on your lap
 ## Requirements
 - Windows
 - Acrobat Reader X (newer versions should work too)
+
+## Usage
+- PDF Presenter does not require an installation. Just extract the `win32` ZIP file and run `PDFPresenter.exe`.
+- Follow the instructions in the application:
+  1. Open your presentation in Acrobat Reader
+  2. Select the position of the notes within your presentation.
+  3. Configure your monitors like the application says.
+  4. Drag'n'drop the presentation icon on the Acrobat Reader window.
+  5. Click the clock symbol to start the timer. (This is optional, obviously.)
