@@ -1,4 +1,4 @@
-# PDF Presenter Changes
+# PDF Presenter
 
 Shows your LaTeX beamer presentation on the projector and your notes on your laptop screen.
 
