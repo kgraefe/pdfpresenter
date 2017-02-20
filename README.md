@@ -22,3 +22,13 @@ Shows your LaTeX beamer presentation on the projector and your notes on your lap
   3. Configure your monitors like the application says.
   4. Drag'n'drop the presentation icon on the Acrobat Reader window.
   5. Click the clock symbol to start the timer. (This is optional, obviously.)
+
+## Contribution
+
+### Code
+We love patches. :heart: Please fork the project, do your changes and make a
+pull request.
+
+### Translations
+Help translating this project on [Transifex](https://www.transifex.com/projects/p/pdfpresenter/).
+
