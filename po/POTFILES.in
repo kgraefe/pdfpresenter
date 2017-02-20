@@ -1,4 +1,3 @@
-src/classes.tcl
 src/classes/MainWindow.tcl
 src/classes/PDFPresenterStrg.tcl
 src/classes/PresentationWindow.tcl
@@ -8,6 +7,7 @@ src/classes/WizardFrame.tcl
 src/classes/WizardOpenPDF.tcl
 src/classes/WizardSelectNotePosition.tcl
 src/classes/WizardShowMonitorPosition.tcl
+src/classes.tcl
 src/functions.tcl
 src/images.tcl
 src/mkCursorHotspot.tcl
