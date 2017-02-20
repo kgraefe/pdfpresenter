@@ -1,5 +1,8 @@
 # PDF Presenter
 
+[![License](https://img.shields.io/badge/License-GPLv2-blue.svg?style=flat)](COPYING)
+[![Download](https://img.shields.io/badge/Download-Latest_Release-brightgreen.svg?style=flat)](https://github.com/kgraefe/pdfpresenter/releases/latest)
+
 Shows your LaTeX beamer presentation on the projector and your notes on your laptop screen.
 
 [![PDF Presenter 1](https://cloud.githubusercontent.com/assets/3797324/13062013/dc316018-d43b-11e5-9968-05b6205183ef.png)](https://cloud.githubusercontent.com/assets/3797324/13062009/d97e8300-d43b-11e5-9328-373b07dfd30d.png)
