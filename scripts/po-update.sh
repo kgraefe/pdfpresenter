@@ -11,3 +11,7 @@ echo "Updating POT template..."
 cd po
 intltool-update -pot -gettext-package=pdfpresenter
 
+sed \
+	-i 's#^\"Content-Type: text/plain; charset=CHARSET\\n\"$#"Content-Type: text/plain; charset=UTF-8\\n"#g' \
+	pdfpresenter.pot
+
