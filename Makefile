@@ -13,7 +13,10 @@ all: program packages
 program: win32/PDFPresenter.exe
 packages: packages/PDFPresenter_win32.zip packages/PDFPresenter_src.tar.gz
 
-DEPENDENCIES=src/*.tcl src/icons/*.png src/classes/*.tcl
+LANG_PO=$(wildcard po/*.po)
+LANG_MSG=$(LANG_PO:po/%.po=src/locales/%.msg)
+
+DEPENDENCIES=src/*.tcl src/icons/*.png src/classes/*.tcl $(LANG_MSG)
 
 run: $(DEPENDENCIES)
 	build-deps/tclkit-win32.exe \
@@ -41,10 +44,12 @@ packages/PDFPresenter_win32.zip: win32/PDFPresenter.exe
 	mkdir -p packages
 	mv tmp/PDFPresenter_win32.zip packages/PDFPresenter_win32.zip
 	rm -rf tmp
-	
+
+src/locales/%.msg: po/%.po
+	msgfmt --tcl $< -l $(<:po/%.po=%) -d src/locales
 
 clean:
-	rm -rf tmp/ *.kit *.vfs
+	rm -rf tmp/ *.kit *.vfs src/locales/*.msg
 	
 dist-clean: clean
 	rm -rf win32/ packages/
