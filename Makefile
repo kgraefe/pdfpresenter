@@ -1,8 +1,10 @@
 sdx = build-deps/sdx.exe
 #sdx = build-deps/sdx_64
 
+.DEFAULT_GOAL:=run
+
 help:
-	@echo "Usage: make <all|program|packages|clean|dist-clean>"
+	@echo "Usage: make <run|all|program|packages|clean|dist-clean>"
 
 all: program packages
 
@@ -10,6 +12,11 @@ program: win32/PDFPresenter.exe
 packages: packages/PDFPresenter_win32.zip packages/PDFPresenter_src.tar.gz
 
 DEPENDENCIES=src/*.tcl src/icons/*.png src/classes/*.tcl
+
+run: $(DEPENDENCIES)
+	build-deps/tclkit-win32.exe \
+		build-deps/PDFPresenter-win32/run.tcl \
+		src/PDFPresenter.tcl
 
 win32/PDFPresenter.exe: $(DEPENDENCIES)
 	rm -rf PDFPresenter.vfs
