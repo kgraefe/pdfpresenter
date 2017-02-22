@@ -3,6 +3,8 @@ sdx = build-deps/sdx.exe
 
 .DEFAULT_GOAL:=run
 
+-include local.mak
+
 help:
 	@echo "Usage: make <run|all|program|packages|clean|dist-clean>"
 
