@@ -21,7 +21,7 @@ DEPENDENCIES=src/*.tcl src/icons/*.png src/classes/*.tcl $(LANG_MSG)
 run: $(DEPENDENCIES)
 	build-deps/tclkit-win32.exe \
 		build-deps/PDFPresenter-win32/run.tcl \
-		src/PDFPresenter.tcl
+		src/PDFPresenter.tcl --debug
 
 win32/PDFPresenter.exe: $(DEPENDENCIES)
 	rm -rf PDFPresenter.vfs
