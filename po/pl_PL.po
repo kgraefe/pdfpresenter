@@ -1,0 +1,76 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-02-23 00:50+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Stanislaw Polak <stanislawp69@gmail.com>, 2017\n"
+"Language-Team: Polish (Poland) (https://www.transifex.com/kgraefe/teams/72022/pl_PL/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl_PL\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: ../src/classes/MainWindow.tcl:25 ../src/classes/PresentationWindow.tcl:29
+msgid "PDF Presenter"
+msgstr "Prezenter PDF"
+
+#: ../src/classes/MainWindow.tcl:44
+msgid "Next >"
+msgstr "Dalej >"
+
+#: ../src/classes/MainWindow.tcl:48
+msgid "< Back"
+msgstr "< Wstecz"
+
+#. Translators: this is the initial value of the stop watch
+#: ../src/classes/PresentationWindow.tcl:52
+#: ../src/classes/PresentationWindow.tcl:166
+msgid "00:00:00"
+msgstr "00:00:00"
+
+#. Translators: hours:minutes:seconds
+#: ../src/classes/PresentationWindow.tcl:145
+#, tcl-format
+msgid "%02d:%02d:%02d"
+msgstr "%02d:%02d:%02d"
+
+#: ../src/classes/WizardDragToStartPresentation.tcl:15
+msgid "Drag&Drop the icon to start the presentation!"
+msgstr "Przeciągnij i upuść poniższą ikonę, aby uruchomić  prezentację!"
+
+#: ../src/classes/WizardDragToStartPresentation.tcl:34
+msgid "Drop it into Adobe Reader's window!"
+msgstr "Upuść ją w oknie Adobe Reader-a!"
+
+#: ../src/classes/WizardOpenPDF.tcl:8
+msgid "Open PDF presentation please!"
+msgstr "Proszę otwórz prezentację PDF!"
+
+#. Translators: "->" represents a right arrow
+#: ../src/classes/WizardOpenPDF.tcl:14
+msgid ""
+"-> Use Adobe Reader X!\n"
+"-> Move it to your laptop screen!"
+msgstr ""
+"-> Użyj Adobe Reader-a X!\n"
+"-> Przenieś go na ekran laptopa!"
+
+#: ../src/classes/WizardSelectNotePosition.tcl:12
+msgid "Where are the notes in your PDF?"
+msgstr "Gdzie są umiejscowione notatki w PDF-ie?"
+
+#: ../src/classes/WizardShowMonitorPosition.tcl:15
+msgid "Set up your desktop like this:"
+msgstr "Skonfiguruj pulpit następująco:"
+
+#: ../src/classes/WizardShowMonitorPosition.tcl:44
+msgid "Make your laptop screen the primary screen!"
+msgstr "Uczyń ekran laptopa ekranem głównym!"
