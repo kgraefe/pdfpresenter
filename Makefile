@@ -49,10 +49,11 @@ packages/PDFPresenter_win32.zip: win32/PDFPresenter.exe
 	rm -rf tmp
 
 src/locales/%.msg: po/%.po
+	mkdir -p src/locales
 	msgfmt --tcl $< -l $(<:po/%.po=%) -d src/locales
 
 clean:
-	rm -rf tmp/ *.kit *.vfs src/locales/*.msg
+	rm -rf tmp/ *.kit *.vfs src/locales
 	
 dist-clean: clean
 	rm -rf win32/ packages/
