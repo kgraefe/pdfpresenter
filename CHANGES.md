@@ -1,5 +1,8 @@
 # PDF Presenter Changes
 
+## Version 1.3 (in development)
+- Add Polish translation
+
 ## Version 1.2 (2017-03-31)
 - Resize presentation window to fit its widgets
 - Add debug output
