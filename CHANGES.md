@@ -1,6 +1,6 @@
 # PDF Presenter Changes
 
-## Version 1.3 (in development)
+## Version 1.3 (2017-04-25)
 - Add Polish translation
 
 ## Version 1.2 (2017-03-31)
